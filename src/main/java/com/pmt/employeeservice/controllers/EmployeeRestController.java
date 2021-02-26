@@ -2,9 +2,11 @@ package com.pmt.employeeservice.controllers;
 
 import com.pmt.employeeservice.entities.Employee;
 import com.pmt.employeeservice.exceptions.InvalidAgeException;
+import com.pmt.employeeservice.services.EmployeeServiceSoap;
 import com.pmt.employeeservice.utils.DiffDate;
 import com.pmt.employeeservice.utils.SysPrint;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,8 @@ import javax.validation.Valid;
 @RequestMapping("/employee")
 public class EmployeeRestController {
 
+    @Autowired
+    EmployeeServiceSoap employeeServiceSoap;
 
     @SneakyThrows
     @GetMapping
@@ -34,6 +38,8 @@ public class EmployeeRestController {
         if (!isAdult) {
             throw new InvalidAgeException(currentAgeInt);
         }
+
+        employeeServiceSoap.saveEmployee(employee);
 
         SysPrint.toJson(employee);
         return ResponseEntity.ok(employee);

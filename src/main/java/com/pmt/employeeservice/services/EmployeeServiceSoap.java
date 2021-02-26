@@ -20,6 +20,9 @@ public class EmployeeServiceSoap implements Service {
         return employeeRepository.save(e);
     }
 
+    public void saveEmployee(Employee e) {
+        employeeRepository.save(e);
+    }
 
     @WebMethod
     @Override
