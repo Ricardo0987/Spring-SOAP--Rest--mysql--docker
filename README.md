@@ -9,7 +9,7 @@
 ## then run:
 docker-compose up -d
 
-#RUN SPRING 
+#RUN only SPRING 
 #install maven; i'm using 3.6.3 version and java 8
 #before mvn clean install
 mvn spring-boot:run
