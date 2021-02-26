@@ -1,5 +1,7 @@
 # employee solution
 
+> Spring - SOAP - Rest - mysql - docker 
+
 ## exec proyect 🔥
 
 ```shell
@@ -13,6 +15,9 @@ docker-compose up -d
 #install maven; i'm using 3.6.3 version and java 8
 #before mvn clean install
 mvn spring-boot:run
+
+#generate jar
+mvn clean package
 ```
 
 > Client SOAP
@@ -21,7 +26,7 @@ mvn spring-boot:run
 > Client Rest
 `http://localhost:8181/employee`
 
-### example rest request curl
+### example rest request (curl)
 
 ```shell
 curl --request GET \
@@ -29,7 +34,7 @@ curl --request GET \
   --header 'Content-Type: application/json' \
   --data '{
 	"names":"Ricardo",
-	"surNames":"Ospina",
+	"surNames":"Ospina P",
 	"documentType":"CC",
 	"documentNumber":"1039456876",
 	"birthDate":"1988/12/25",
@@ -39,18 +44,18 @@ curl --request GET \
 }'
 ```
 
-### example rest response curl
+### example rest response (curl)
 
 ```json
 {
-  "names": "Ricardo Leon",
-  "surNames": "Ospina Patno",
+  "names": "Ricardo",
+  "surNames": "Ospina P",
   "documentNumber": "1039456876",
   "documentType": "CC",
   "birthDate": "1988/12/25",
   "dateLinkCompany": "2012/10/08",
   "position": "developer",
-  "salary": 2222.0,
+  "salary": 2500000.0,
   "currentAge": "32 year(s), 2 month(s), 1 day(s)",
   "companyLinkTime": "8 year(s), 4 month(s), 18 day(s)"
 }

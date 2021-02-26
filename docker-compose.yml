@@ -1,8 +1,9 @@
-version: "3"
+version: "3.4"
 services:
 
 #  MySQL Service
   mysql-db:
+    network_mode: host
     image: mysql:5.7.33
     container_name: db
     ports:
@@ -12,11 +13,10 @@ services:
       MYSQL_ROOT_PASSWORD: root
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    networks:
-      - app-network
 
   #spring Service
   spring-boot-app:
+    network_mode: host
     image: spring-boot-image
     build:
       context: ./
@@ -24,15 +24,9 @@ services:
     depends_on:
       - mysql-db
     environment: # Pass environment variables to the service
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/employee_db?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/employee_db?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     ports:
       - 8181:8181
       - 4444:4444
-    networks:
-      - app-network
-
-#Docker Networks
-networks:
-  app-network:
