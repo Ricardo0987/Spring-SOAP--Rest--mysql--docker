@@ -4,13 +4,25 @@
 
 ## exec proyect 🔥
 
+## in linux 
+
 ```shell
 #RUN MYSQL and Spring
 ## using docker
 # before install docker and docker-compose
 ## then run:
 docker-compose up -d
+```
 
+## in windows
+```shell
+docker run --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=employee_db -d mysql:5.7.33
+# wait to up mysql an then run:
+java -jar employeeService.jar
+``` 
+
+## maven commands
+```shell
 #RUN only SPRING 
 #install maven; i'm using 3.6.3 version and java 8
 #before mvn clean install
@@ -18,7 +30,7 @@ mvn spring-boot:run
 
 #generate jar
 mvn clean package
-```
+``` 
 
 > Client SOAP
 `http://localhost:4444/employeeServiceSoap?wsdl`
